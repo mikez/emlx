@@ -9,7 +9,7 @@ Install
 
 Install and update using `pip`:
 
-```console
+```
 pip install emlx
 ```
 

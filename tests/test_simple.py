@@ -1,6 +1,6 @@
 import os.path
-import pytest
 
+import pytest
 
 import emlx
 
