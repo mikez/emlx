@@ -1,3 +1,7 @@
 .coverage
 .DS_Store
+.pytest_cache
 __pycache__
+build/
+dist/
+emlx.egg-info

@@ -6,13 +6,25 @@ import emlx
 
 
 TEST_FILE = "test.emlx"
+# flags = 8623489089
+# flags = (
+#     (1 << 0)  # read
+#     + (1 << 6)  # draft
+#     + (1 << 25)  # is not junk
+#     + (1 << 33)  # (something undocumented Apple adds)
+# )
+TEST_FLAGS = {"read": True, "draft": True, "is_not_junk": True}
 
 
 @pytest.fixture
-def message(request):
+def message_filepath(request):
     dirname = os.path.dirname(request.module.__file__)
-    filepath = f"{dirname}/{TEST_FILE}"
-    return emlx.read(filepath)
+    return f"{dirname}/{TEST_FILE}"
+
+
+@pytest.fixture
+def message(message_filepath, request):
+    return emlx.read(message_filepath)
 
 
 def test_bytecount(message):
@@ -27,12 +39,11 @@ def test_data(message):
 
 
 def test_flags(message):
-    # flag = 8623489089
-    flag = (
-        (1 << 0)  # read
-        + (1 << 6)  # draft
-        + (1 << 25)  # is not junk
-        + (1 << 33)  # (something undocumented Apple adds)
-    )
-    flags = message.plist["flags"]
-    assert flags == {"read": True, "draft": True, "is_not_junk": True}
+    assert message.plist["flags"] == TEST_FLAGS
+
+
+def test_message_plist_only(message_filepath, request):
+    message = emlx.read(message_filepath, plist_only=True)
+    assert message.bytecount == 545
+    assert message.data is None
+    assert message.plist["flags"] == TEST_FLAGS

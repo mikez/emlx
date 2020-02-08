@@ -7,12 +7,17 @@ with open("README.md", "r") as f:
 setup(
     name="emlx",
     version="0.1.0",
+    url="https://github.com/mikez/emlx",
+    project_urls={
+        "Code": "https://github.com/mikez/emlx",
+        "Issue tracker": "https://github.com/mikez/emlx/issues",
+    },
+    license="MIT",
     author="Michael Belfrage",
     author_email="consulting@belfrage.net",
     description="The leightweight parser for emlx files.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/mikez/emlx",
     packages=find_packages(),
     classifiers=[
         "License :: OSI Approved :: MIT License",

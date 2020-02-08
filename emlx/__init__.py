@@ -1,10 +1,11 @@
-#!/usr/bin/env python
-# encoding: utf-8
-"""emlx.py
+# -*- coding: utf-8 -*-
+"""
 
-Emlx is a lightweight parser for Mail.app's emlx files.
+emlx - the lightweight parser for emlx files.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-USAGE
+Basic usage:
+
     >>> import emlx
     >>> message = emlx.read("12345.emlx")
     >>> message.bytecount
@@ -16,7 +17,8 @@ USAGE
     >>> message.plist
     {'date-received': 1581123200, 'flags': {'read': True, ...}, ...}
 
-INSPIRATIONS
+Inspired by:
+
     Karl Dubost - https://gist.github.com/karlcow/5276813
     Rui Carmo - https://the.taoofmac.com/space/blog/2008/03/03/2211
     Jamie Zawinski - https://www.jwz.org/blog/2005/07/emlx-flags/

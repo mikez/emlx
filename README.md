@@ -1,7 +1,7 @@
 Emlx
 =====
 
-Emlx is a lightweight parser for `.emlx` files as used by Mail.app.
+Emlx is the lightweight parser for `.emlx` files as used by Mail.app.
 
 
 Install
@@ -22,10 +22,10 @@ Example
 >>> message = emlx.read("12345.emlx")
 >>> message.bytecount
 1781
+>>> message.data.keys()
+['Message-Id', 'From', 'Mime-Version', 'Content-Type', 'Subject', 'Date', ...]
 >>> message.data["Message-Id"]
 '<07F45222-4A09-11EA-BBA5-5CF9389AFA5E@example.com>'
->>> message.data.keys()
-['From', 'Mime-Version', 'Content-Type', 'Subject', 'Date', ...]
 >>> message.plist
 {'date-received': 1581123200, 'flags': {'read': True, ...}, ...}
 ```
