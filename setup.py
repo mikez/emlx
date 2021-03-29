@@ -6,7 +6,7 @@ with open("README.md", "r") as f:
 
 setup(
     name="emlx",
-    version="1.0.0",
+    version="1.0.4",
     url="https://github.com/mikez/emlx",
     project_urls={
         "Code": "https://github.com/mikez/emlx",
