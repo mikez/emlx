@@ -6,10 +6,10 @@ import pytest
 import emlx
 
 
-TEST_FILE = "test.emlx"
-TEST_BYTECOUNT = 545
+TEST_FILE = "plaintext.emlx"
+TEST_BYTECOUNT = 497
 TEST_MESSAGE_ID = "<7A129E26-2C1F-4517-B6B5-39460ED50E12@example.com>"
-TEST_PAYLOAD_LENGTH = 73
+TEST_TEXT_LENGTH = TEST_PAYLOAD_LENGTH = 73
 # raw_flags = 8623489089
 # = (
 #     (1 << 0)  # read
@@ -24,6 +24,8 @@ TEST_PLIST = {
     "flags": {"read": True, "draft": True, "is_not_junk": True},
     "remote-id": "789",
 }
+
+# Fixtures
 
 
 @pytest.fixture
@@ -43,6 +45,9 @@ def message(message_filepath):
     return emlx.read(message_filepath)
 
 
+# Tests
+
+
 def test_bytecount(message):
     assert message.bytecount == TEST_BYTECOUNT
 
@@ -51,6 +56,8 @@ def test_message_mime_content(message):
     assert message.headers["Message-Id"] == TEST_MESSAGE_ID
     assert message.id == TEST_MESSAGE_ID
     assert message.url == "message:" + TEST_MESSAGE_ID
+    assert message.html is None
+    assert len(message.text) == TEST_TEXT_LENGTH
     assert len(message.get_payload()) == TEST_PAYLOAD_LENGTH
 
 

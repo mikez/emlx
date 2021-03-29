@@ -7,9 +7,10 @@ emlx.emlx
 This module implements the Emlx object and helper methods.
 """
 
+import datetime
 import email
-from email.header import decode_header
-from email.header import make_header
+from email.header import decode_header, make_header
+from email.iterators import typed_subpart_iterator
 import email.message
 import plistlib
 
@@ -83,6 +84,8 @@ class Emlx(email.message.Message):
             self.headers = decode_headers(self)
             self.id = get_case_insensitive(self.headers, "Message-ID")
             self.url = self.id and f"message:{self.id}"
+            self.text = find_next_payload_of_type(self, "text", "plain")
+            self.html = find_next_payload_of_type(self, "text", "html")
 
         self.bytecount = bytecount
 
@@ -143,6 +146,16 @@ def safe_decode_header(header):
         return make_header(decode_header(header))
     except Exception:
         return header
+
+
+def find_next_payload_of_type(message, maintype="text", subtype=None):
+    return next(
+        (
+            part.get_payload()
+            for part in typed_subpart_iterator(message, maintype, subtype)
+        ),
+        None,
+    )
 
 
 def decode_plist_flags(integer):
