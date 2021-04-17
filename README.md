@@ -27,7 +27,7 @@ Basic usage
  'Content-Type': 'text/plain; charset=utf-8',
  ...}
 >>> m.text
-"You are welcome. :)\n\n> Python <python@example.com> wrote:\n>\n> Thank you!\n\n"
+'You are welcome. :)\n\n> Python <python@example.com> wrote:\n>\n> Thank you!\n\n'
 >>> m.html is None
 True
 >>> m.plist
