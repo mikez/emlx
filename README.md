@@ -57,3 +57,8 @@ History
 -------
 
 The `emlx` file format was introduced by Apple in 2005. It is similar to `eml`-files popular with other email clients; the difference is the added bytecount (start) and plist (end). For more, see [here](https://en.wikipedia.org/wiki/Email#Filename_extensions).
+
+Troubleshooting
+---------------
+
+Make sure the terminal or IDE you are using has access to the Mail folders. For example, if you are using PyCharm, you will need to grant the program "Full Disk Access" by going to `System Settings > Privacy & Security` and turn it on for Pycharm. This will resolve errors such as `Operation not permitted`
