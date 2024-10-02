@@ -41,6 +41,12 @@ True
 ```
 
 
+Troubleshooting
+---------------
+
+Make sure the terminal or IDE you are using has access to the Mail folders. For example, if you are using PyCharm, you will need to grant the program "Full Disk Access" by going to `System Settings > Privacy & Security` and turn it on for Pycharm. This will resolve errors such as `Operation not permitted`.
+
+
 Architecture
 ------------
 
